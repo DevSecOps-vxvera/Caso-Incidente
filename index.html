@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Ejercicio guiado de la primera hora de respuesta a incidentes: analizar un caso ficticio, completar el registro inicial y decidir acciones.">
+  <title>Caso guiado · Primera hora</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#inicio" aria-label="Ir al inicio"><span class="brand-mark">04</span><span>RESPUESTA <b>A INCIDENTES</b></span></a>
+  <nav aria-label="Navegación principal"><a href="#caso">Escenario</a><a href="#flujo">Flujo</a><a href="#ejercicio">Ejercicio</a></nav>
+  <span class="fiction"><i></i> Simulación ficticia</span>
+</header>
+<main id="inicio">
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span class="spark"></span> EJERCICIO GUIADO · 60 MINUTOS</p>
+      <h1>La primera hora<br><em>marca el rumbo.</em></h1>
+      <p class="lede">Un proveedor reporta una sesión anómala. Hay dos pagos pendientes y llega un correo de extorsión. Analiza los hechos, completa el registro inicial y decide qué hacer sin confundir señales con conclusiones.</p>
+      <div class="hero-actions"><a class="button primary" href="#caso">Revisar el caso <span>↓</span></a><span class="duration">6 decisiones · retroalimentación inmediata</span></div>
+      <div class="hero-pills"><span>Cooperativa ficticia</span><span>Fraude + posible exposición</span><span>Enfoque: triage</span></div>
+    </div>
+    <div class="hero-art" aria-label="Ilustración de correo, pagos pendientes y alerta de seguridad">
+      <div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div>
+      <div class="art-node mail-node"><span class="art-icon">✉</span><b>Correo</b><small>regla externa</small></div>
+      <div class="art-node pay-node"><span class="art-icon">$</span><b>Pagos</b><small>2 pendientes</small></div>
+      <div class="art-node alert-node"><span class="art-icon">!</span><b>Extorsión</b><small>afirmación no validada</small></div>
+      <div class="art-center"><span>PRIMERA</span><b>60</b><span>MINUTOS</span></div>
+      <span class="art-caption cap-one">IDENTIDAD</span><span class="art-caption cap-two">SERVICIOS</span>
+    </div>
+  </section>
+
+  <section id="caso" class="section case-section">
+    <div class="section-head"><div><p class="eyebrow">01 · LEE EL ESCENARIO</p><h2>Una solicitud de proveedor y una alerta de extorsión.</h2><p class="section-copy">Cooperativa Sierra Azul —organización y nombres ficticios—. Hora local simulada: UTC−05:00.</p></div><span class="tag-fictitious">CASO DIDÁCTICO</span></div>
+    <div class="scenario-layout">
+      <article class="story-card">
+        <div class="story-top"><span class="story-label">CONTEXTO INICIAL</span><span class="story-date">MARTES · 09:15</span></div>
+        <p><b>09:04.</b> Un contacto de <b>Suministros Sierra S.A.</b>, llamado al número registrado en el maestro de proveedores, informa que recibió una notificación de inicio de sesión inusual en su buzón. Todavía no entrega sus registros técnicos.</p>
+        <p><b>09:08.</b> Cuentas por pagar recibe dentro de un hilo existente una solicitud urgente para cambiar la cuenta bancaria del proveedor. En el ERP hay <b>dos transferencias pendientes</b>; ninguna está aprobada ni liberada. El cambio solicitado no aparece guardado en el ERP.</p>
+        <p><b>09:11.</b> Llega a una bandeja de la cooperativa un correo de extorsión que afirma que se copiaron estados de cuenta de socios. Incluye una captura parcial, sin origen validado.</p>
+        <p><b>09:15.</b> La auditoría de correo de la cooperativa muestra que a las <b>08:56</b> se creó una regla de reenvío externa en el buzón de un usuario de cuentas por pagar, desde una IP no habitual. El centro de operaciones confirma que los canales digitales y el sistema transaccional están disponibles.</p>
+        <div class="story-alert"><span>!</span><p><b>No se sabe aún</b> si el buzón del proveedor y el de la cooperativa fueron comprometidos por el mismo actor, si algún mensaje salió al exterior o si datos de socios fueron consultados.</p></div>
+      </article>
+      <aside class="facts-card">
+        <div class="fact-row"><span class="fact-mark confirmed">✓</span><div><b>Confirmado en sistemas propios</b><small>Regla externa de reenvío · 2 pagos pendientes · canales operativos</small></div></div>
+        <div class="fact-row"><span class="fact-mark reported">↗</span><div><b>Reportado por tercero</b><small>El proveedor recibió una alerta de sesión anómala; faltan sus logs</small></div></div>
+        <div class="fact-row"><span class="fact-mark unknown">?</span><div><b>Por verificar</b><small>Exfiltración, personas afectadas, relación entre cuentas y alcance</small></div></div>
+        <div class="fact-note"><b>Tu rol:</b> eres quien coordina el triage inicial. Registra hechos con hora y fuente, asigna responsables y deja explícito qué sigue pendiente.</div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="flujo" class="section flow-section">
+    <div class="section-head"><div><p class="eyebrow">02 · VISUALIZA LA RUTA</p><h2>Conecta las señales; no des por probada la hipótesis.</h2><p class="section-copy">El flujo representa hechos y relaciones por investigar. Selecciona un nodo para ver qué se sabe.</p></div><div class="legend"><span><i class="legend-dot green"></i>Verificado</span><span><i class="legend-dot amber"></i>Reportado</span><span><i class="legend-dot red"></i>No validado</span></div></div>
+    <div class="flow-canvas">
+      <svg class="flow-lines" viewBox="0 0 1200 360" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M210 100 C320 100 350 180 475 180" class="line reported-line"/><path d="M210 265 C320 265 350 180 475 180" class="line confirmed-line"/>
+        <path d="M620 180 C730 180 760 100 885 100" class="line confirmed-line"/><path d="M620 180 C730 180 760 265 885 265" class="line unverified-line"/>
+        <path d="M210 100 C500 25 700 25 885 100" class="line hypothesis-line"/>
+      </svg>
+      <button class="flow-node vendor-node" data-node="vendor"><span class="node-icon">V</span><b>Proveedor</b><small>aviso de sesión</small><span class="node-state reported-state">reportado</span></button>
+      <button class="flow-node mailbox-node" data-node="mailbox"><span class="node-icon">✉</span><b>Buzón AP</b><small>regla externa 08:56</small><span class="node-state confirmed-state">auditado</span></button>
+      <button class="flow-node center-node" data-node="thread"><span class="node-icon">↗</span><b>Hilo de factura</b><small>cambio bancario solicitado</small><span class="node-state investigate-state">investigar origen</span></button>
+      <button class="flow-node erp-node" data-node="payments"><span class="node-icon">$</span><b>ERP / tesorería</b><small>2 pagos pendientes</small><span class="node-state confirmed-state">sin liberar</span></button>
+      <button class="flow-node extortion-node" data-node="extortion"><span class="node-icon">!</span><b>Correo de extorsión</b><small>“copiamos estados”</small><span class="node-state unverified-state">afirmación</span></button>
+      <div id="flow-detail" class="flow-detail" aria-live="polite"><b>Empieza por la señal auditada:</b> una regla de reenvío se creó en un buzón interno. Investiga qué mensajes procesó y quién tuvo acceso.</div>
+    </div>
+    <div class="flow-summary"><span class="summary-label">RELACIÓN ENTRE EVENTOS</span><p>Puede tratarse de una misma ruta de fraude, de incidentes relacionados o de señales independientes. <b>Correlaciona identidad, correo y ERP antes de atribuir causalidad.</b></p></div>
+  </section>
+
+  <section class="section timeline-section">
+    <div class="section-head"><div><p class="eyebrow">03 · RECORRE LA PRIMERA HORA</p><h2>Avanza por etapas y abre el foco de cada ventana.</h2></div></div>
+    <div class="timeline" role="tablist" aria-label="Ventanas de respuesta">
+      <button class="time-tab active" role="tab" aria-selected="true" data-time="0"><span class="time-dot">1</span><b>0–10 min</b><small>Abrir registro</small></button>
+      <button class="time-tab" role="tab" aria-selected="false" data-time="1"><span class="time-dot">2</span><b>10–20 min</b><small>Confirmar alcance</small></button>
+      <button class="time-tab" role="tab" aria-selected="false" data-time="2"><span class="time-dot">3</span><b>20–35 min</b><small>Contener con autorización</small></button>
+      <button class="time-tab" role="tab" aria-selected="false" data-time="3"><span class="time-dot">4</span><b>35–50 min</b><small>Evaluar impacto</small></button>
+      <button class="time-tab" role="tab" aria-selected="false" data-time="4"><span class="time-dot">5</span><b>50–60 min</b><small>Escalar y actualizar</small></button>
+    </div>
+    <div id="time-detail" class="time-detail" role="tabpanel" aria-live="polite"></div>
+  </section>
+
+  <section id="ejercicio" class="section exercise-section">
+    <div class="section-head exercise-head"><div><p class="eyebrow">04 · COMPLETA EL REGISTRO INICIAL</p><h2>Elige la respuesta más útil para cada campo.</h2><p class="section-copy">Responde seis decisiones. Tras cada una verás qué está bien sustentado y qué falta por investigar.</p></div><div class="progress-card"><span>AVANCE</span><b id="progress-count">0 / 6</b></div></div>
+    <div class="exercise-wrap">
+      <div class="exercise-progress"><span id="step-kicker">CAMPO 1 DE 6</span><span id="score-kicker">0 aciertos</span></div>
+      <div class="progress-bar"><div id="progress-fill"></div></div>
+      <div id="exercise-panel" class="exercise-panel" aria-live="polite"></div>
+      <div id="answer-feedback" class="answer-feedback" hidden aria-live="polite"></div>
+      <div class="exercise-controls"><button id="restart-exercise" class="link-button" type="button">Reiniciar ejercicio</button><button id="continue-exercise" class="button primary" type="button" disabled>Comprobar respuesta <span>→</span></button></div>
+    </div>
+  </section>
+
+  <section id="registro-final" class="section report-section" hidden>
+    <div class="section-head"><div><p class="eyebrow">05 · SALIDA DEL EJERCICIO</p><h2>Registro inicial del incidente</h2><p class="section-copy">Borrador didáctico basado en tus elecciones. Revisa hechos y pendientes antes de usar un formato institucional real.</p></div><span class="draft-tag">PROVISIONAL</span></div>
+    <div id="report-body" class="report-body"></div>
+    <div class="report-actions"><button id="copy-report" class="button secondary" type="button">Copiar registro</button><button id="download-report" class="button primary" type="button">Descargar .txt</button><span id="copy-status" class="copy-status" aria-live="polite"></span></div>
+    <div class="lesson-card"><span>✓</span><p><b>Debrief:</b> una respuesta sólida conserva lo que se sabe, separa lo reportado de lo verificado, prioriza los pagos y evita convertir la extorsión en una conclusión sobre la brecha de datos.</p></div>
+  </section>
+
+  <section class="sources-section"><p class="eyebrow">MÉTODO</p><p>El ejercicio es ficticio y sigue principios generales de NIST SP 800-61 Rev. 3: preparar, detectar y analizar, responder, recuperar y mejorar. Adecúa roles, plazos, evidencias y comunicaciones al procedimiento aprobado de tu organización.</p><a href="https://doi.org/10.6028/NIST.SP.800-61r3" target="_blank" rel="noopener noreferrer">NIST SP 800-61 Rev. 3 ↗</a></section>
+</main>
+<footer><span>SESIÓN 04 · RESPUESTA A INCIDENTES</span><span>Ejercicio educativo · entidades, identidades, pagos y mensajes ficticios.</span><a href="#inicio">Volver arriba ↑</a></footer>
+<script src="app.js"></script>
+</body>
+</html>
